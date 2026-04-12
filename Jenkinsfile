@@ -4,7 +4,7 @@ agent any
 stages {
     stage('Build') {
         steps {
-            bat 'mvn clean package'
+            bat 'C:\Program Files\Maven\\mvn clean package'
         }
     }
 
