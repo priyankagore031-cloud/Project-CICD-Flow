@@ -22,7 +22,7 @@ pipeline {
 
         steps {
 
-            bat "mvn clean package"
+            sh "mvn clean package"
         }
 
 
@@ -42,8 +42,8 @@ pipeline {
 
         steps {
 
-            bat "docker build -t %IMAGE_NAME%:1.0 ."
-            bat "docker build -t %IMAGE_NAME%:2.0 ."
+            sh "docker build -t %IMAGE_NAME%:1.0 ."
+            sh "docker build -t %IMAGE_NAME%:2.0 ."
 
         }
      }
@@ -56,7 +56,7 @@ pipeline {
             usernameVariable: 'DOCKER_USER',
             passwordVariable: 'DOCKER_PASS'
         )]) {
-            bat "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
+            sh "docker login -u %DOCKER_USER% -p %DOCKER_PASS%"
         }
     }
 }
@@ -65,8 +65,8 @@ pipeline {
 
         steps {
 
-            bat "docker push %IMAGE_NAME%:1.0"
-            bat "docker push %IMAGE_NAME%:2.0"
+            sh "docker push %IMAGE_NAME%:1.0"
+            sh "docker push %IMAGE_NAME%:2.0"
 
         }
     }
@@ -77,8 +77,8 @@ pipeline {
 
         steps {
 
-            bat "docker pull %IMAGE_NAME%:1.0"
-            bat "docker pull %IMAGE_NAME%:2.0"
+            sh "docker pull %IMAGE_NAME%:1.0"
+            sh "docker pull %IMAGE_NAME%:2.0"
 
         }
     }
@@ -88,7 +88,7 @@ pipeline {
 
         steps {
 
-            bat "docker-compose up -d"
+            sh "docker-compose up -d"
         }
     }
 }
