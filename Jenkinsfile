@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages{
-
+   /*
       stage('Git Checkout'){
 
         steps {
@@ -16,6 +16,7 @@ pipeline {
         }
 
       }
+   */
 
      stage('maven build'){
 
